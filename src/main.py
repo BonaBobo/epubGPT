@@ -7,7 +7,7 @@ from llama_index import GPTSimpleVectorIndex, download_loader
 
 load_dotenv()
 
-book = "book/Glucose_revolution.epub"
+book = "../book/Glucose_revolution.epub"
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 
