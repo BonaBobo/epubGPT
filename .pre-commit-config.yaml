@@ -1,0 +1,47 @@
+repos:
+# Make sure to run isort before black formatting, because black will
+# reformat the imports differently then isort reformat them.
+- repo: https://github.com/pycqa/isort
+  rev: 5.6.4
+  hooks:
+    - id: isort
+      args: ["--profile", "black", "--filter-files"]
+
+- repo: https://github.com/ambv/black
+  rev: 22.3.0
+  hooks:
+  - id: black
+    args: # arguments to configure black
+      - --line-length=110
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.4.0
+  hooks:
+  - id: check-toml
+  - id: check-yaml
+
+- repo: https://github.com/roy-ht/pre-commit-jupyter
+  rev: v1.2.1
+  hooks:
+    - id: jupyter-notebook-cleanup
+
+ # Flake8 checks are last, as this checks if everything is in order.
+- repo: https://github.com/pycqa/flake8
+  rev: 4.0.1
+  hooks:
+      - id: flake8
+        args: # arguments to configure flake8
+          # making isort line length compatible with black
+          - "--max-line-length=110"
+          - "--extend-ignore=B008,E203"
+        additional_dependencies: [
+                                  flake8-builtins,
+                                  flake8-bugbear,
+                                  flake8-comprehensions,
+                                  flake8-broken-line,
+                                  flake8-double-quotes,
+                                  flake8-rst-docstrings,
+                                  flake8-docstrings,
+                                  pep8-naming,
+                                  importlib-metadata<4.3,
+                                  ]
