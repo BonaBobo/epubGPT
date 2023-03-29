@@ -7,7 +7,7 @@ from llama_index import GPTSimpleVectorIndex, download_loader
 
 load_dotenv()
 
-book = r"path_to_book"
+book = "book/Glucose revolution - the life-changing power of balancing your blood sugar.epub"
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 
